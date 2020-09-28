@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Order Robot</string>
+    <string name="dsl_service_desc">大参林点餐群自动点餐</string>
+    <string name="dsl_tip">原理：微信收到信息,出现顶部通知,开启的残疾人辅助功能会监听到信息文本,遍历关键词,如果适配上关键词，就模拟点击通知跳转进聊天页面自动回复.</string>
+</resources>
