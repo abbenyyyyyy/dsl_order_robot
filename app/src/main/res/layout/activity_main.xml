@@ -15,9 +15,10 @@
         android:padding="15dp">
 
         <TextView
+            android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="大参林微信点餐群自动下单机器人v1.0.2"
+            android:text="大参林微信点餐群自动下单机器人"
             android:textColor="#fff"
             android:textSize="15dp" />
 
@@ -51,7 +52,33 @@
             android:layout_marginTop="1dp"
             android:text="My email address：abbenyyyyyy@qq.com"
             android:textColor="#fff"
+            android:textIsSelectable="true"
             android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开源地址："
+                android:textColor="#fff"
+                android:textIsSelectable="true"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/to_open_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="https://github.com/abbenyyyyyy/dsl_order_robot"
+                android:textColor="#468bff"
+                android:textIsSelectable="true"
+                android:textSize="15dp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,12 +91,12 @@
                 android:id="@+id/to_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:background="#1e1e1e"
                 android:paddingStart="15dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="10dp"
-                android:layout_marginEnd="20dp"
                 android:text="查看示例视频"
                 android:textColor="#e4e4e4" />
 

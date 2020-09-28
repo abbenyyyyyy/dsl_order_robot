@@ -2,6 +2,7 @@ package com.dsl.orderrobot
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +24,6 @@ import com.dsl.orderrobot.widget.AddTriggerDialog
 import com.dsl.orderrobot.widget.DividerLine
 import com.dsl.orderrobot.widget.YesOrNoDialog
 import io.reactivex.FlowableSubscriber
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -119,6 +120,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         trigger_recyclerview.adapter = triggerAdapter
 
+        app_name.text = String.format(
+            "大参林微信点餐群自动下单机器人v%s",
+            packageManager.getPackageInfo(packageName, 0).versionName
+        )
+
+        to_open_source.setOnClickListener(this)
         to_start_service.setOnClickListener(this)
         to_video.setOnClickListener(this)
         add_trigger.setOnClickListener(this)
@@ -246,6 +253,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
+            R.id.to_open_source -> {
+                val intent = Intent()
+                intent.action = Intent.ACTION_VIEW
+                intent.data = Uri.parse((p0 as TextView).text.toString())
+                // 注意此处的判断intent.resolveActivity()可以返回显示该Intent的Activity对应的组件名
+                // 官方解释 : Name of the component implementing an activity that can display the intent
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivity(Intent.createChooser(intent, "请选择浏览器"))
+                } else {
+                    Toast.makeText(this, "无浏览器.", Toast.LENGTH_LONG).show()
+                }
+            }
             R.id.to_start_service -> {
                 val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
